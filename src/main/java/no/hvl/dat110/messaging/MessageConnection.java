@@ -40,6 +40,7 @@ public class MessageConnection {
     try {
       data = MessageUtils.encapsulate(message);
       outStream.write(data);
+      outStream.flush();
     } catch (IOException e) {
       System.out.println("Error while encapsulation: " + e.toString());
     }
@@ -51,8 +52,8 @@ public class MessageConnection {
 		byte[] data;
 
     try {
-      data = inStream.readAllBytes();
-      message = new Message(data);
+      data = inStream.readNBytes(128);
+      message = MessageUtils.decapsulate(data);
     } catch (IOException e) {
       System.out.println("Error while decapsulation: " + e.toString());
     }

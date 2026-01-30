@@ -32,9 +32,9 @@ public class MessagingClient {
       clientSocket = new Socket(server, port);
       connection = new MessageConnection(clientSocket);
     } catch (UnknownHostException unknownHostException) {
-      System.out.println("Unknown host: " + unknownHostException.toString());
+      System.out.println("Unknown host, try again! " + unknownHostException.toString());
     } catch (IOException ioException) {
-      System.out.println("Unknown input: " + ioException.toString());
+      System.out.println("Error, please check input! " + ioException.toString());
     }
 
 		return connection;
