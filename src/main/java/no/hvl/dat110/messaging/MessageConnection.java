@@ -4,6 +4,7 @@ package no.hvl.dat110.messaging;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.Socket;
 
 import no.hvl.dat110.TODO;
@@ -35,30 +36,27 @@ public class MessageConnection {
 	public void send(Message message) {
 
 		byte[] data;
-		
-		// TODO - START
-		// encapsulate the data contained in the Message and write to the output stream
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-			
-		// TODO - END
 
+    try {
+      data = MessageUtils.encapsulate(message);
+      outStream.write(data);
+    } catch (IOException e) {
+      System.out.println("Error while encapsulation: " + e.toString());
+    }
 	}
 
 	public Message receive() {
 
 		Message message = null;
 		byte[] data;
-		
-		// TODO - START
-		// read a segment from the input stream and decapsulate data into a Message
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - END
-		
+
+    try {
+      data = inStream.readAllBytes();
+      message = new Message(data);
+    } catch (IOException e) {
+      System.out.println("Error while decapsulation: " + e.toString());
+    }
+
 		return message;
 		
 	}
