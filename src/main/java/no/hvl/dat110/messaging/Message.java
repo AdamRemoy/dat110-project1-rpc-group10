@@ -9,7 +9,7 @@ public class Message {
 
 	// construction a Message with the data provided
 	public Message(byte[] data) {
-    if (data != null && data.length < 127)
+    if (data != null && data.length < 128)
       this.data = data;
 	}
 
