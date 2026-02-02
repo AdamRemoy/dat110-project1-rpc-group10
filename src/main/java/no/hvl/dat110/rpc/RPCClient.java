@@ -16,7 +16,7 @@ public class RPCClient {
 	}
 	
 	public void connect() {
-    msgclient.connect();
+    connection = msgclient.connect();
 	}
 	
 	public void disconnect() {
